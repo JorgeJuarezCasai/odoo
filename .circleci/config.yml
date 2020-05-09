@@ -8,6 +8,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
+            ssh $SSH_USER@$SSH_HOST "rm -dfr /opt/odoo/odoo"
             ssh $SSH_USER@$SSH_HOST "git -C /opt/odoo clone $CIRCLE_REPOSITORY_URL --single-branch -b 12.0 --depth=1 "
 
 workflows:
