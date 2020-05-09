@@ -9,6 +9,8 @@ jobs:
           name: Deploy Over SSH
           command: |
             ssh $SSH_USER@$SSH_HOST "
+              sudo wget -O - https://nightly.odoo.com/odoo.key | sudo apt-key add -
+              sudo echo "deb http://nightly.odoo.com/11.0/nightly/deb/ ./" >> /etc/apt/sources.list
               sudo apt-get update
               sudo apt-get install odoo -y
             " 
